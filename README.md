@@ -65,6 +65,7 @@ tally/
 ├── .gitignore                <- transient AIKit state and local ledgers excluded
 ├── LICENSE
 ├── README.md
+├── COMMERCIAL.md
 ├── pyproject.toml            <- package metadata and the `tally` console script
 ├── tally/
 │   ├── __init__.py
