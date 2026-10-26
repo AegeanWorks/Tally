@@ -1,6 +1,6 @@
 # tally
 
-[![Built with AIKit](https://img.shields.io/badge/built%20with-AIKit-6f42c1)](https://github.com/Aegean-E/AIKit)
+[![Built with AIKit](https://img.shields.io/badge/built%20with-AIKit-6f42c1)](https://github.com/AegeanWorks/AIKit)
 
 A dependency-free, local-first expense ledger for the terminal. Record what you spend, list it,
 and see where the money went. Everything stays in one readable JSON file on your machine.
@@ -64,6 +64,8 @@ tally/
 ├── .aikit/                   <- this project's memory: record, ledger, decisions
 ├── .gitignore                <- transient AIKit state and local ledgers excluded
 ├── LICENSE
+├── LICENSES/                 <- REUSE license texts
+├── REUSE.toml                <- Machine-readable SPDX metadata
 ├── README.md
 ├── COMMERCIAL.md
 ├── pyproject.toml            <- package metadata and the `tally` console script
@@ -87,3 +89,9 @@ tally/
 
 The on-disk schema, money representation and crash-safety choices are recorded in
 `.aikit/decisions.md` (ADR-001).
+
+> **License history:** versions up to and including `v0.1.0-agpl` remain available under GNU AGPL-3.0.
+
+## 📜 License
+
+Free for personal use under the Aegean License 1.1 (AL-1.1); see [LICENSE](LICENSE). Any commercial use needs the Aegean Commercial License 1.0 (ACL-1.0); see [COMMERCIAL.md](COMMERCIAL.md).
