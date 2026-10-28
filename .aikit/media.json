@@ -24,15 +24,22 @@
         "method": "vision",
         "notes": "Tally FINANCE none",
         "score": 95,
-        "reviewed_at": "2026-10-28T17:30:34"
+        "reviewed_at": "2026-10-28T17:52:10"
       }
     },
     "social_preview": {
-      "path": "assets/social-preview.jpg",
-      "status": "pending_review",
+      "path": "assets/social-preview.png",
+      "status": "approved",
       "commit": "",
-      "generated_at": "2026-10-28T16:41:17",
-      "review": null
+      "generated_at": "2026-10-28T17:41:17",
+      "review": {
+        "status": "approved",
+        "reviewer": "subagent:vision-review",
+        "method": "vision",
+        "notes": "Tally\\nFINANCE",
+        "score": 95,
+        "reviewed_at": "2026-10-28T17:52:10"
+      }
     }
   },
   "screenshots": [],
