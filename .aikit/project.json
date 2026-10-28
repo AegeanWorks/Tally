@@ -3,5 +3,62 @@
   "name": "tally",
   "test_command": null,
   "gates": {},
-  "created": "2026-10-19"
+  "created": "2026-10-19",
+  "has_ui": false,
+  "ui_kind": "cli",
+  "ui_evidence": [
+    "tally/cli.py"
+  ],
+  "ui_checked_at": "2026-10-28",
+  "ui_source": "detected",
+  "topics": [
+    "aikit",
+    "budgeting",
+    "cli",
+    "expense-tracker",
+    "finance",
+    "json",
+    "ledger",
+    "local-first",
+    "python",
+    "terminal",
+    "source-available",
+    "aegeanworks",
+    "command-line-tool",
+    "expense-management",
+    "personal-finance",
+    "software",
+    "financial-tracking",
+    "financial-planning",
+    "personal-budget",
+    "csv"
+  ],
+  "topics_source": "ai:kilo:2026-10-27",
+  "topics_reviewed_at": "2026-10-28",
+  "topics_choice": [
+    "aegeanworks",
+    "software",
+    "command-line-tool",
+    "personal-finance",
+    "expense-management"
+  ],
+  "topics_choice_round2": [
+    "budgeting",
+    "expense-tracker",
+    "finance",
+    "ledger",
+    "json",
+    "personal-finance"
+  ],
+  "topics_choice_round3": [
+    "personal-finance",
+    "ledger",
+    "json",
+    "financial-tracking"
+  ],
+  "topics_choice_round4": [
+    "personal-budget",
+    "expense-management",
+    "financial-planning"
+  ]
 }
