@@ -13,6 +13,9 @@
   "ui_source": "detected",
   "topics": [
     "aikit",
+    "source-available",
+    "aegean-license",
+    "commercial-license",
     "budgeting",
     "cli",
     "expense-tracker",
@@ -22,16 +25,13 @@
     "local-first",
     "python",
     "terminal",
-    "source-available",
     "aegeanworks",
     "command-line-tool",
     "expense-management",
     "personal-finance",
-    "software",
     "financial-tracking",
     "financial-planning",
-    "personal-budget",
-    "csv"
+    "personal-budget"
   ],
   "topics_source": "ai:kilo:2026-10-27",
   "topics_reviewed_at": "2026-10-28",
@@ -60,5 +60,10 @@
     "personal-budget",
     "expense-management",
     "financial-planning"
+  ],
+  "license_topics": [
+    "source-available",
+    "aegean-license",
+    "commercial-license"
   ]
 }
