@@ -17,35 +17,35 @@
       "path": "assets/logo.png",
       "status": "approved",
       "commit": "",
-      "generated_at": "2026-10-28T11:43:55",
+      "generated_at": "2026-10-28T13:53:43",
       "review": {
         "status": "approved",
-        "reviewer": "subagent:vision-review",
+        "reviewer": "subagent:brand-review",
         "method": "vision",
-        "notes": "Monogram TA matches project; legible small, unclipped, no overlaps/watermark, premium.",
-        "score": 90,
-        "reviewed_at": "2026-10-28T11:49:30"
+        "notes": "TA monogram badge clean. FINANCE eyebrow fits personal finance ledger CLI. Tally in title case, well-spaced, unclipped. Terminal/laptop imagery fits CLI finance tool. No footer.",
+        "score": 86,
+        "reviewed_at": "2026-10-28T14:00:01"
       }
     },
     "social_preview": {
       "path": "assets/social-preview.png",
       "status": "approved",
       "commit": "",
-      "generated_at": "2026-10-28T11:43:55",
+      "generated_at": "2026-10-28T13:53:43",
       "review": {
         "status": "approved",
-        "reviewer": "subagent:vision-review",
+        "reviewer": "subagent:brand-review",
         "method": "vision",
-        "notes": "Strong hierarchy; legible, unclipped; premium card, no watermark.",
-        "score": 89,
-        "reviewed_at": "2026-10-28T11:49:30"
+        "notes": "Personal finance ledger CLI card; tagline 'A plain-text ledger for personal finance.' Clean dark-blue card, no clipping; chips (budgeting, cli, expense tracker) and URL legible; ledger-notebook image fits finance theme.",
+        "score": 92,
+        "reviewed_at": "2026-10-28T14:00:01"
       }
     },
     "artwork": {
       "path": "assets/artwork.jpg",
       "status": "pending_review",
       "commit": "",
-      "generated_at": "2026-10-28T11:43:55",
+      "generated_at": "2026-10-28T13:34:38",
       "review": null
     }
   },
