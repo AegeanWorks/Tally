@@ -6,11 +6,11 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `12`
-- **Total Classes**: `12`
+- **Total Python Modules**: `13`
+- **Total Classes**: `13`
 - **Total Top-Level Functions**: `15`
-- **Total Class Methods**: `93`
-- **Total Source Lines**: `1312`
+- **Total Class Methods**: `97`
+- **Total Source Lines**: `1390`
 
 ---
 
@@ -101,7 +101,7 @@
 ### [`tally/storage.py`](tally/storage.py)
 > *Crash-resilient JSON storage for the ledger (PRINCIPLE-013).*
 
-**Size**: `231` lines (`9844` bytes)
+**Size**: `259` lines (`10895` bytes)
 
 **Classes:**
 - `class StateStore` - *The ledger file, its backup and its lock, addressed by one path.*
@@ -109,10 +109,11 @@
   - Method `.read()` - *Every recorded expense; a missing ledger is an empty one.*
   - Method `.update(mutate)` - *Apply `mutate` to the ledger and persist its result under one held lock.*
   - Method `._load()` - *Parse the ledger, recovering from a readable backup before giving up on it.*
-  - Method `._backup_or_empty(reason, quarantine)` - *Use the backup when it parses; otherwise quarantine the bad file and start empty.*
+  - Method `._backup_or_empty(reason, quarantine, allow_empty)` - *Use the backup when it parses; otherwise quarantine or refuse as the caller requires.*
   - Method `._read_backup()` - *The parsed backup, or None when it is absent or unreadable.*
   - Method `._decode(data)` - *Validate the document envelope and rebuild every expense.*
   - Method `._save(expenses)` - *Write the ledger atomically, keeping the previous version as a backup.*
+  - Method `._write_backup()` - *Replace the backup atomically, keeping the old one when the copy fails.*
   - Method `._replace(temp_path)` - *Replace the ledger, retrying only transient sharing violations on Windows (ADR-002).*
   - Method `._fsync_directory(directory)` - *Flush the directory entry on POSIX; Windows cannot fsync a directory handle.*
   - Method `._quarantine()` - *Move a corrupt ledger aside so it can neither block reads nor be overwritten.*
@@ -218,10 +219,21 @@
 
 ---
 
+### [`tests/test_package.py`](tests/test_package.py)
+> *Metadata tests for the importable package.*
+
+**Size**: `21` lines (`566` bytes)
+
+**Classes:**
+- `class PackageMetadataTests`
+  - Method `.test_module_version_matches_pyproject()`
+
+---
+
 ### [`tests/test_storage.py`](tests/test_storage.py)
 > *Fault-injection tests for the atomic ledger store (PRINCIPLE-013).*
 
-**Size**: `113` lines (`4665` bytes)
+**Size**: `142` lines (`6153` bytes)
 
 **Classes:**
 - `class StoreFaultTests`
@@ -237,5 +249,7 @@
   - Method `.test_replace_retries_a_permission_error_then_succeeds()`
   - Method `.test_fsync_directory_failure_is_reported()`
   - Method `.test_backup_failure_is_reported_and_the_write_continues()`
+  - Method `.test_unreadable_ledger_without_backup_is_refused()`
+  - Method `.test_failed_backup_replace_keeps_the_previous_backup()`
 
 ---

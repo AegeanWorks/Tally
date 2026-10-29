@@ -66,6 +66,7 @@ python -m tally [--db PATH] summary [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--mon
 ```text
 tally/
 ├── .aikit/                   <- this project's memory: record, ledger, decisions
+├── assets/                   <- generated brand art and social preview
 ├── .gitignore                <- transient AIKit state and local ledgers excluded
 ├── LICENSE
 ├── LICENSES/                 <- REUSE license texts
@@ -86,6 +87,7 @@ tally/
     ├── test_cli.py
     ├── test_ledger.py
     ├── test_models.py
+    ├── test_package.py
     └── test_storage.py
 ```
 

@@ -68,6 +68,20 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
   exports. Backward compatibility is fully preserved for callers invoking `entries()` or `summary()`
   without date bounds.
 
+### ADR-005: Refuse unreadable ledgers and replace backups atomically
+- **Date**: 2026-10-29
+- **Status**: Accepted
+- **Context**: A Reforge review of the storage layer found that an unreadable ledger was treated as
+  an empty one, so a later write could replace it, and that the backup was copied in place, so a
+  crash during that copy could destroy the last good backup.
+- **Decision**: `_load` raises the Error/Why/Fix triad when the ledger cannot be read and no
+  readable backup exists; it never returns an empty list for that case. A backup is copied to a
+  unique temporary file in the ledger directory, fsynced, and moved over `.bak` with `os.replace`,
+  keeping the previous backup when the copy or replace fails.
+- **Consequences**: A permissions or I/O failure leaves the ledger and backup untouched and asks the
+  operator to repair access. A failed backup refresh still prints one `[WARN]` and the ledger write
+  continues, as ADR-002 requires. The JSON schema, lock protocol and backup filename are unchanged.
+
 ## Licensing migration (v0.1.0-agpl)
 
 - New versions use the Aegean License 1.1 (AL-1.1); versions up to and including `v0.1.0-agpl` remain under GNU AGPL-3.0.

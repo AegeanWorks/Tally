@@ -54,19 +54,28 @@ class StateStore:
             text = self.path.read_text(encoding="utf-8")
             data = json.loads(text)
         except OSError as exc:
-            return self._backup_or_empty(f"could not read {self.path}: {exc}", quarantine=False)
+            return self._backup_or_empty(
+                f"could not read {self.path}: {exc}", quarantine=False, allow_empty=False
+            )
         except ValueError:
             return self._backup_or_empty(f"{self.path} is not valid JSON", quarantine=True)
         return self._decode(data)
 
-    def _backup_or_empty(self, reason: str, quarantine: bool) -> List[Expense]:
-        """Use the backup when it parses; otherwise quarantine the bad file and start empty."""
+    def _backup_or_empty(self, reason: str, quarantine: bool,
+                         allow_empty: bool = True) -> List[Expense]:
+        """Use the backup when it parses; otherwise quarantine or refuse as the caller requires."""
         if quarantine:
             self._quarantine()
         backup = self._read_backup()
         if backup is not None:
             print(f"[WARN] {reason}; recovered from {self.backup_path.name}.", file=sys.stderr)
             return self._decode(backup)
+        if not allow_empty:
+            raise TallyError(
+                f"{self.path} could not be read and has no usable backup.",
+                reason,
+                "fix the file's permissions or restore the .bak file; nothing was changed.",
+            )
         print(f"[WARN] {reason}; starting with an empty ledger.", file=sys.stderr)
         return []
 
@@ -130,17 +139,36 @@ class StateStore:
                 handle.flush()
                 os.fsync(handle.fileno())
             if self.path.exists():
-                try:
-                    shutil.copy2(self.path, self.backup_path)
-                except OSError as exc:
-                    print(
-                        f"[WARN] Could not write backup {self.backup_path.name}: {exc}",
-                        file=sys.stderr,
-                    )
+                self._write_backup()
             self._replace(temp_path)
             self._fsync_directory(self.path.parent)
         finally:
             temp_path.unlink(missing_ok=True)
+
+    def _write_backup(self) -> None:
+        """Replace the backup atomically, keeping the old one when the copy fails."""
+        temp_path: Optional[Path] = None
+        try:
+            descriptor, temp_name = tempfile.mkstemp(
+                dir=self.path.parent, prefix=f".{self.backup_path.name}.tmp_"
+            )
+            temp_path = Path(temp_name)
+            os.close(descriptor)
+            shutil.copy2(self.path, temp_path)
+            descriptor = os.open(temp_path, os.O_RDWR)
+            try:
+                os.fsync(descriptor)
+            finally:
+                os.close(descriptor)
+            os.replace(temp_path, self.backup_path)
+        except OSError as exc:
+            print(
+                f"[WARN] Could not write backup {self.backup_path.name}: {exc}",
+                file=sys.stderr,
+            )
+        finally:
+            if temp_path is not None:
+                temp_path.unlink(missing_ok=True)
 
     def _replace(self, temp_path: Path) -> None:
         """Replace the ledger, retrying only transient sharing violations on Windows (ADR-002)."""

@@ -108,6 +108,35 @@ class StoreFaultTests(unittest.TestCase):
         self.assertIn("backup", error.getvalue())
         self.assertEqual(self.store.read(), [])
 
+    def test_unreadable_ledger_without_backup_is_refused(self):
+        self._write([Expense(1, 500, "food", "", "2026-10-18")])
+        before = self.path.read_text(encoding="utf-8")
+        with mock.patch("pathlib.Path.read_text", side_effect=PermissionError("denied")):
+            with self.assertRaises(TallyError):
+                self.store.update(
+                    lambda current: current + [Expense(2, 100, "food", "", "2026-10-19")]
+                )
+        self.assertEqual(self.path.read_text(encoding="utf-8"), before)
+
+    def test_failed_backup_replace_keeps_the_previous_backup(self):
+        self._write([Expense(1, 500, "food", "", "2026-10-18")])
+        self._write([Expense(1, 500, "food", "", "2026-10-18")])
+        previous = self.store.backup_path.read_text(encoding="utf-8")
+        real_replace = storage.os.replace
+
+        def replace(source, destination):
+            if Path(destination) == self.store.backup_path:
+                raise OSError("backup busy")
+            return real_replace(source, destination)
+
+        error = io.StringIO()
+        with mock.patch("tally.storage.os.replace", side_effect=replace):
+            with redirect_stderr(error):
+                self._write([Expense(2, 700, "transport", "", "2026-10-19")])
+        self.assertEqual(self.store.backup_path.read_text(encoding="utf-8"), previous)
+        self.assertIn("[WARN]", error.getvalue())
+        self.assertEqual([expense.id for expense in self.store.read()], [2])
+
 
 if __name__ == "__main__":
     unittest.main()
