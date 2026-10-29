@@ -1,52 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "tally-reforge-fixes-v1",
+    "task_id": "tally-license-refs-v1",
     "last_phase": "phase 4",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1793293436.585679,
+    "updated_at": 1793293660.1029482,
     "owner": "opencode:reforge-fixes",
     "started_by": "opencode:reforge-fixes",
     "continuations": [],
-    "completed_at": 1793293551.6169245
+    "completed_at": 1793293660.3911953
   },
   "checkpoints": [
-    {
-      "task_id": "task-tally-edit-remove-v1",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/4]-[3/4] complete: parse_id, Ledger.edit/remove under the existing lock, edit/remove CLI with triad failures, 18 new tests (47 total), README and ADR-003, map refreshed. Phase 4: tests 47/47; checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792433156.6298876,
-      "timestamp_str": "2026-10-19 21:05:56"
-    },
-    {
-      "task_id": "task-tally-edit-remove-v1",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'task-tally-edit-remove-v1' completed successfully.",
-      "status": "completed",
-      "timestamp": 1792433193.3164923,
-      "timestamp_str": "2026-10-19 21:06:33"
-    },
-    {
-      "task_id": "task-tally-date-filter-v1",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/4] Models and ledger: parse_month, date range validation, Ledger.entries and Ledger.summary with date filters; failing-first tests for month parsing, range bounds and filtered queries; [2/4] CLI: --from, --to, --month options for list and summary, triad error paths and CLI tests; [3/4] Docs and memory: README commands and examples, ADR-004, refreshed codebase map; [4/4] Phase 4 delivery triad: gates, commit verification, push and task completion",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792439763.3416398,
-      "timestamp_str": "2026-10-19 22:56:03",
-      "impact_assessment": {
-        "why": "Enable time-bounded expense tracking so users can list and summarize expenses by month or date range instead of only all-time history",
-        "benefits": "Users can filter list and summary with --from, --to, or --month, with exact date validation, bounds checks, and friendly triad errors",
-        "risks": "contract: optional flags added to list and summary commands, ledger schema is unchanged; dependency: none (calendar and datetime stdlib only); concurrency: read-only operations on existing store; state: no schema migration needed",
-        "mitigation": "failing-first unit and CLI tests covering month parsing, date bounds, conflict combinations, and filtered totals; full Phase 4 gate verification"
-      }
-    },
     {
       "task_id": "task-tally-date-filter-v1",
       "phase": "phase 4",
@@ -248,6 +213,44 @@
       "status": "completed",
       "timestamp": 1793293551.616927,
       "timestamp_str": "2026-10-29 20:05:51",
+      "agent": "opencode:reforge-fixes"
+    },
+    {
+      "task_id": "tally-license-refs-v1",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/1] Ship the referenced ACL-1.0 and AegeanWorks Contributor License Agreement under LICENSES/ and point both AL-1.1 texts at the shipped files",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793293640.2913353,
+      "timestamp_str": "2026-10-29 20:07:20",
+      "agent": "opencode:reforge-fixes",
+      "impact_assessment": {
+        "why": "The AL-1.1 license text referenced licenses/CONTRIBUTING_CLA.md and licenses/ACL-1.0.md, but neither file existed in the repository, so readers could not follow the contribution or commercial terms",
+        "benefits": "The license is self-contained offline, the two references resolve with the repository's uppercase LICENSES/ convention, and the duplicate AL-1.1 text stays identical",
+        "risks": "contract: documentation and legal text only, no code or schema change; dependency: none; concurrency: none; state: no migration",
+        "mitigation": "Copy the canonical texts from projects/aegean-licensing, change only the two relative paths in each AL-1.1 copy, and run all four project gates before the commit; unrelated in-flight LICENSE edits stay unstaged"
+      }
+    },
+    {
+      "task_id": "tally-license-refs-v1",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[1/1] ACL-1.0.md and CONTRIBUTING_CLA.md are shipped under LICENSES/; both AL-1.1 copies point at them and remain identical; tests 66/66 and gates 4/4 passed; checklists: passed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793293660.1029482,
+      "timestamp_str": "2026-10-29 20:07:40",
+      "agent": "opencode:reforge-fixes"
+    },
+    {
+      "task_id": "tally-license-refs-v1",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'tally-license-refs-v1' completed successfully.",
+      "status": "completed",
+      "timestamp": 1793293660.3911972,
+      "timestamp_str": "2026-10-29 20:07:40",
       "agent": "opencode:reforge-fixes"
     }
   ]
