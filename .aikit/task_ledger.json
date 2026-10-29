@@ -1,85 +1,16 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "task-tally-date-filter-v1",
+    "task_id": "tally-reforge-fixes-v1",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1792440122.1390877,
-    "completed_at": 1792440198.6582546
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1793293436.585679,
+    "owner": "opencode:reforge-fixes",
+    "started_by": "opencode:reforge-fixes",
+    "continuations": []
   },
   "checkpoints": [
-    {
-      "task_id": "task-tally-bootstrap-v1",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/3] Plan: dependency-free Python CLI expense ledger; package, storage, CLI and tests",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792390192.9712796,
-      "timestamp_str": "2026-10-19 09:09:52",
-      "impact_assessment": {
-        "why": "Bootstrap a complete, useful first project in the dedicated projects/ workspace",
-        "benefits": "Working add/list/summary expense tracker with atomic local JSON storage and a passing regression suite",
-        "risks": "contract: new CLI and on-disk schema; dependency: none (stdlib only); concurrency: advisory lock around read-modify-write; state: JSON ledger needs atomic write and backup",
-        "mitigation": "Document commands in README, one schema in storage module, <.lock> plus temp+fsync+replace and .bak, unit tests for every command and fault"
-      }
-    },
-    {
-      "task_id": "task-tally-bootstrap-v1",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[2/3] Implement package: models, atomic storage, ledger operations and CLI",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792390276.0881495,
-      "timestamp_str": "2026-10-19 09:11:16"
-    },
-    {
-      "task_id": "task-tally-bootstrap-v1",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[3/3] Docs and memory: README, ADR-001, gitignore; prepare Phase 4 gates",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792390612.3262296,
-      "timestamp_str": "2026-10-19 09:16:52"
-    },
-    {
-      "task_id": "task-tally-bootstrap-v1",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[3/3] Phase 4 passed: tests 25/25, hygiene, guidelines and secrets gates green; checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792390686.1598752,
-      "timestamp_str": "2026-10-19 09:18:06"
-    },
-    {
-      "task_id": "task-tally-bootstrap-v1",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'task-tally-bootstrap-v1' completed successfully.",
-      "status": "completed",
-      "timestamp": 1792390690.730269,
-      "timestamp_str": "2026-10-19 09:18:10"
-    },
-    {
-      "task_id": "task-tally-durability-v1",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/3] Fix the three hygiene findings in storage.py; retry os.replace only on PermissionError with exponential backoff; warn when the backup copy or directory fsync fails; failing-first tests for each failure path; [2/3] regenerate .aikit/codebase_map.md, record ADR-002, update README if behaviour text changes; [3/3] run all four Phase 4 gates, smoke-test add/list/summary, commit and push",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792432624.4829118,
-      "timestamp_str": "2026-10-19 20:57:04",
-      "impact_assessment": {
-        "why": "Tally fails the kit's current Phase 4 gates (hygiene, stale map) and its storage loop predates ADR-146, so continuing from a red baseline would mix new work with old drift",
-        "benefits": "every gate passes again; a non-transient replace failure is reported at once instead of after five sleeps; a failed backup or directory fsync is announced instead of silently dropped",
-        "risks": "contract: storage behaviour changes only in failure paths, the ledger schema is untouched; dependency: none; concurrency: lock ordering and stale-break rules are unchanged; state: no migration",
-        "mitigation": "failing-first tests pin retry scope and warning paths; a full gate run plus add/list/summary smoke test before the commit; no unrelated file edited"
-      }
-    },
     {
       "task_id": "task-tally-durability-v1",
       "phase": "phase 4",
@@ -168,6 +99,158 @@
       "status": "completed",
       "timestamp": 1792440198.6582558,
       "timestamp_str": "2026-10-19 23:03:18"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 1",
+      "phase_num": 3,
+      "description": "Reforge stage 1: window 3, 3 commit(s), 2 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793292565.1704705,
+      "timestamp_str": "2026-10-29 19:49:25",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 2",
+      "phase_num": 3,
+      "description": "Reforge stage 2: window 6, 3 commit(s), 2 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, 1 binary not analysed",
+      "files_affected": [
+        "assets/social-preview.png"
+      ],
+      "status": "in_progress",
+      "timestamp": 1793292608.6460571,
+      "timestamp_str": "2026-10-29 19:50:08",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 3",
+      "phase_num": 3,
+      "description": "Reforge stage 3: window 9, 3 commit(s), 2 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, 5 binary not analysed",
+      "files_affected": [
+        "assets/artwork.jpg",
+        "assets/logo.jpg",
+        "assets/logo.png",
+        "assets/social-preview.jpg",
+        "assets/social-preview.png"
+      ],
+      "status": "in_progress",
+      "timestamp": 1793292640.2890255,
+      "timestamp_str": "2026-10-29 19:50:40",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 4",
+      "phase_num": 3,
+      "description": "Reforge stage 4: window 12, 3 commit(s), 3 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, 1 binary not analysed",
+      "files_affected": [
+        "assets/social-preview.png"
+      ],
+      "status": "in_progress",
+      "timestamp": 1793292662.3005612,
+      "timestamp_str": "2026-10-29 19:51:02",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 5",
+      "phase_num": 3,
+      "description": "Reforge stage 5: window 15, 3 commit(s), 11 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, 1 binary not analysed",
+      "files_affected": [
+        "assets/social-preview.png"
+      ],
+      "status": "in_progress",
+      "timestamp": 1793292707.1720304,
+      "timestamp_str": "2026-10-29 19:51:47",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 6",
+      "phase_num": 3,
+      "description": "Reforge stage 6: window 18, 3 commit(s), 4 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793292803.6750195,
+      "timestamp_str": "2026-10-29 19:53:23",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 7",
+      "phase_num": 3,
+      "description": "Reforge stage 7: window 21, 3 commit(s), 2 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793292828.6526735,
+      "timestamp_str": "2026-10-29 19:53:48",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 8",
+      "phase_num": 3,
+      "description": "Reforge stage 8: window 24, 3 commit(s), 9 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793292861.350752,
+      "timestamp_str": "2026-10-29 19:54:21",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-1",
+      "phase": "reforge stage 9",
+      "phase_num": 3,
+      "description": "Reforge stage 9: window 27, 3 commit(s), 19 file(s) reviewed (unreviewed), 3 finding(s), 0 repaired (reliability=3)",
+      "files_affected": [
+        "tally/storage.py"
+      ],
+      "status": "in_progress",
+      "timestamp": 1793292947.4356093,
+      "timestamp_str": "2026-10-29 19:55:47",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "tally-reforge-fixes-v1",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Fix the two storage durability findings and sync the module version; add failing-first tests for an unreadable ledger, a failed atomic backup, and package metadata",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793293336.8438377,
+      "timestamp_str": "2026-10-29 20:02:16",
+      "agent": "opencode:reforge-fixes",
+      "impact_assessment": {
+        "why": "Reforge review found an unreadable ledger could be overwritten and a backup could be destroyed by a crash, and pyproject 0.2.0 disagrees with tally.__version__ 0.1.0",
+        "benefits": "A read error leaves the ledger and backup intact; a failed backup replace keeps the previous backup; the importable version matches the package metadata",
+        "risks": "contract: storage failure paths change from starting empty to refusing, and .bak gains atomic replacement; dependency: none (stdlib only); concurrency: the lock, read-modify-write order and stale-lock rules are unchanged; state: JSON schema, lock protocol and backup filename are unchanged",
+        "mitigation": "Three failing-first tests pin the new failure paths and the version match; all four project gates run before the commit; the unrelated dirty LICENSE files are not staged"
+      }
+    },
+    {
+      "task_id": "tally-reforge-fixes-v1",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Storage now refuses an unreadable ledger without a backup and replaces .bak atomically; tally.__version__ is 0.2.0; tests 66/66 and gates 4/4 passed; checklists: passed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793293341.0175004,
+      "timestamp_str": "2026-10-29 20:02:21",
+      "agent": "opencode:reforge-fixes"
+    },
+    {
+      "task_id": "tally-reforge-fixes-v1",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] README tree now lists tests/test_package.py after the new test became tracked; tests 66/66 and gates 4/4 passed; checklists: passed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793293436.585679,
+      "timestamp_str": "2026-10-29 20:03:56",
+      "agent": "opencode:reforge-fixes"
     }
   ]
 }
