@@ -13,25 +13,6 @@
   },
   "checkpoints": [
     {
-      "task_id": "task-tally-date-filter-v1",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/4]-[3/4] complete: parse_month, resolve_date_range, date-bounded Ledger.entries and summary, CLI --from/--to/--month options with triad errors; 16 new tests (63 total); ADR-004, README, refreshed map. Phase 4: tests 63/63; checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1792440122.1390877,
-      "timestamp_str": "2026-10-19 23:02:02"
-    },
-    {
-      "task_id": "task-tally-date-filter-v1",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'task-tally-date-filter-v1' completed successfully.",
-      "status": "completed",
-      "timestamp": 1792440198.6582558,
-      "timestamp_str": "2026-10-19 23:03:18"
-    },
-    {
       "task_id": "reforge:run-1",
       "phase": "reforge stage 1",
       "phase_num": 3,
@@ -252,6 +233,28 @@
       "timestamp": 1793293660.3911972,
       "timestamp_str": "2026-10-29 20:07:40",
       "agent": "opencode:reforge-fixes"
+    },
+    {
+      "task_id": "reforge:run-3",
+      "phase": "reforge run",
+      "phase_num": 3,
+      "description": "run started (start=2, step=1, stop=2)",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1793293678.5040514,
+      "timestamp_str": "2026-10-29 20:07:58",
+      "agent": "opencode"
+    },
+    {
+      "task_id": "reforge:run-3",
+      "phase": "reforge stage 1",
+      "phase_num": 3,
+      "description": "Reforge stage 1: window 2, 2 commit(s), 4 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired",
+      "files_affected": [],
+      "status": "completed",
+      "timestamp": 1793293681.3862371,
+      "timestamp_str": "2026-10-29 20:08:01",
+      "agent": "opencode"
     }
   ]
 }
