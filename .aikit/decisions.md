@@ -91,3 +91,7 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 ## License notice cleanup (2026-10-26)
 
 - The license-history notes were removed from README.md and COMMERCIAL.md: the project is offered only under the Aegean License 1.1 (AL-1.1), with commercial use under ACL-1.0.
+
+## License text cleanup (2026-10-29)
+
+- The AL-1.1 texts no longer name GNU AGPL-3.0 inside the earlier-license and compatibility clauses; Section 10.3 still preserves earlier licenses generically. `LICENSE` and `LICENSES/LicenseRef-AL-1.1.txt` remain byte-identical.
